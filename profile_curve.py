@@ -5,6 +5,7 @@ area
 """
 
 import timeit
+import os
 import sys
 import shutil
 
@@ -16,9 +17,12 @@ def main(npoints, nprocesses):
     start = timeit.default_timer()
 
     dia = oe.HybridDia.load('/bigwork/nhmcsgue/large/single{}'.format(npoints))
-    dia.name = 'curve'
-    shutil.copy('single{}'.format(npoints), 'curve{}'.format(npoints))
-    dia._nprocesses = nprocesses
+    dia.name = 'curve{}_{}'.format(npoints, nprocesses)
+    try:
+        shutil.copytree('single{}'.format(npoints),
+                        'curve{}_{}'.format(npoints, nprocesses))
+    except FileExistsError:
+        pass
 
     end = timeit.default_timer() - start
     print('Preprocessing... {} seconds'.format(end))
@@ -38,5 +42,5 @@ def main(npoints, nprocesses):
 
 if __name__ == '__main__':
     NPOINTS = int(sys.argv[1])
-    NPROCESSES = 1
+    NPROCESSES = int(sys.argv[2])
     main(NPOINTS, NPROCESSES)
