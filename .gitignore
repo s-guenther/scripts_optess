@@ -1,0 +1,11 @@
+.idea/
+__pycache__/
+results.yml
+stahlwerk*
+*.hyb
+*.opt
+*.pyc
+/dist/
+*egg*
+build/
+*.lp
