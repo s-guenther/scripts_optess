@@ -15,4 +15,4 @@ module load Gurobi/7.5.2
 
 cd $BIGWORK/large
 
-python3 /home/nhmcsgue/optess/first1000.py
+python3 /home/nhmcsgue/scripts_optess/first1000.py

@@ -43,7 +43,7 @@ do
     PARTITION="${PARTITIONLIST[i]}"
     NAME="all${NPOINTSLIST[i]}"
     
-    envsubst < /home/nhmcsgue/optess/scripts/resources/all.sh > $DIRNAME/$NAME.sh
+    envsubst < /home/nhmcsgue/scripts_optess/all.sh > $DIRNAME/$NAME.sh
 done
     
 

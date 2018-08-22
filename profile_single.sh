@@ -1,9 +1,10 @@
 #!/bin/bash -login
 
-#PBS -l nodes=1:ppn=8
-#PBS -l walltime=00:05:00
-#PBS -l mem=4GB
-#PBS -N second1000
+#PBS -l nodes=1:ppn=$CORES
+#PBS -l walltime=$WALLTIME
+#PBS -l mem=$MEM
+#PBS -W x=PARTITION:$PARTITION
+#PBS -N $NAME
 #PBS -M sebastian.guenther@ifes.uni-hannover.de
 #PBS -m abe
 #PBS -j oe
@@ -17,4 +18,5 @@ module load matplotlib/1.5.1-Python-3.4.3
 
 cd $BIGWORK/large
 
-python3 /home/nhmcsgue/optess/scripts/resources/second1000.py
+/usr/bin/time -v python3 \
+/home/nhmcsgue/scripts_optess/profile_single.py $NPOINTS
