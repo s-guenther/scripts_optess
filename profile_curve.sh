@@ -19,4 +19,4 @@ module load matplotlib/1.5.1-Python-3.4.3
 cd $BIGWORK/large
 
 /usr/bin/time -v python3 \
-/home/nhmcsgue/scripts_optess/profile_curve.py $NPOINTS $CORES
+/home/nhmcsgue/scripts_optess/profile_curve.py $NPOINTS

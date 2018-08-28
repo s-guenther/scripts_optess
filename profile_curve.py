@@ -5,22 +5,20 @@ area
 """
 
 import timeit
-import os
 import sys
 import shutil
 
 import optess as oe
 
 
-def main(npoints, nprocesses):
+def main(npoints):
     # Load single calculation
     start = timeit.default_timer()
 
     dia = oe.HybridDia.load('/bigwork/nhmcsgue/large/single{}'.format(npoints))
-    dia.name = 'curve{}_{}'.format(npoints, nprocesses)
+    dia.name = 'curve{}'.format(npoints)
     try:
-        shutil.copytree('single{}'.format(npoints),
-                        'curve{}_{}'.format(npoints, nprocesses))
+        shutil.copytree('single{}'.format(npoints), 'curve{}'.format(npoints))
     except FileExistsError:
         pass
 
@@ -42,5 +40,4 @@ def main(npoints, nprocesses):
 
 if __name__ == '__main__':
     NPOINTS = int(sys.argv[1])
-    NPROCESSES = int(sys.argv[2])
-    main(NPOINTS, NPROCESSES)
+    main(NPOINTS)

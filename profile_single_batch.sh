@@ -1,29 +1,24 @@
 #!/bin/bash
 
-NPOINTSLIST=(1000 1500 2000 3000 4500 6000 8000 \
-             10000 15000 20000 30000 45000 60000 80000\
-             100000 150000 200000 300000 450000 600000 800000\
-             1000000)
+NPOINTSLIST=(1000 2000 4000 6000 9000 13000 \
+             13001 20000 30000 30001 40000 55000 \
+             55001 80000 115000 115001 140000 175000 \
+             175001 200000 240000)
 
-CORESLIST=(1 1 1 1 1 1 1 \
-           1 1 1 1 1 1 1 \
-           1 1 1 1 1 1 1 \
-           1)
+CORESLIST=(1 1 1 1 1 1 \
+           1 1 1 1 1 1 \
+           1 1 1 1 1 2 \
+           2 2 2)
 
-WALLTIMELIST=(00:00:12 00:00:15 00:00:15 00:00:15 00:00:15 00:00:18 00:00:20 \
-              00:00:22 00:00:35 00:00:45 00:01:00 00:01:30 00:02:00 00:02:50 \
-              00:03:40 00:07:00 00:10:00 00:18:00 00:32:00 01:00:00 01:42:00 \
-              02:20:00)
+WALLTIMELIST=(00:00:12 00:00:15 00:00:15 00:00:18 00:00:25 00:00:32 \
+              00:00:32 00:00:45 00:01:10 00:01:10 00:01:30 00:02:10 \
+              00:02:10 00:03:20 00:06:00 00:06:00 00:07:00 00:09:00 \
+              00:09:00 00:10:00 00:13:00)
 
-MEMLIST=(200MB 220MB 240MB 256MB 300MB 350MB 400MB \
-         400MB 600MB 700MB 1000MB 1400MB 1800MB 2400MB \
-         3GB 4GB 5GB 8GB 12GB 15GB 20GB \
-         25GB)
-
-PARTITIONLIST=(lena lena lena lena lena lena lena \
-               lena lena lena lena lena lena lena \
-               lena lena lena lena lena lena lena \
-               lena)
+MEMLIST=(100MB 200MB 300MB 400MB 400MB 500MB \
+         500MB 600MB 800MB 800MB 1200MB 1600MB \
+         1600MB 2100MB 3200MB 3200MB 3800MB 4500MB \
+         4500MB 5000MB 6500MB)
 
 export NPOINTS
 export CORES
@@ -32,7 +27,7 @@ export MEM
 export PARTITION
 export NAME
 
-DIRNAME=singlesubs
+DIRNAME=single
 if [ ! -d ${DIRNAME}j ]
 then
     mkdir ${DIRNAME}
@@ -44,7 +39,7 @@ do
     CORES="${CORESLIST[i]}"
     WALLTIME="${WALLTIMELIST[i]}"
     MEM="${MEMLIST[i]}"
-    PARTITION="${PARTITIONLIST[i]}"
+    PARTITION=lena:haku
     NAME=single_points_"$NPOINTS"_cores_"$CORES"_partition_"$PARTITION"
 
     echo Processing ${NAME}
